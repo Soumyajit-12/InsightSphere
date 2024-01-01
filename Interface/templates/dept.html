@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block content %}
+    <div class="homeHeader">
+        <div class="left">
+            <img class="Inst logo" src="{% static 'images/InsightSphere_logo.png' %}" alt="logo"/>
+        </div>
+        <div class="center">
+            <p class="welcome-header">BRITANNIA INSIGHTSPHERE - CENTRAL REPORTING PLATFORM</p>
+        </div>
+        <div class="right">
+            <img class="Brit BritanniaLogo logo" src="{% static 'images/Britannia_logo.png' %}" alt="logo"/>
+            <div class="logout-btn" onclick="logout()">Logout&nbsp;<i class="bi bi-box-arrow-right"></i></div>
+        </div>
+    </div>
+    <div class="dept_header">
+        <p> {{dept}} Department</p>
+    </div>
+    <div class="homeContainer">
+        {% for i in info %}
+        <div class="box" id="{{i.link}}" onclick="redirect_to(this.id)">
+            <p class="links"> {{i.tag}} </p>
+        </div>
+        {% endfor %}
+    </div>
+    
+
+    <script>
+        function redirect_to(address){
+            window.open(`https://${address}`, "_blank");
+        }
+        function logout() {
+            window.location.href = "/logout";
+        }
+    </script>
+
+    {% endblock %}

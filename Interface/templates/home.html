@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block content %}
+    <div class="homeHeader">
+        <div class="left">
+            <img class="Inst logo" src="{% static 'images/InsightSphere_logo.png' %}" alt="logo"/>
+        </div>
+        <div class="center">
+            <p class="welcome-header">Welcome {{ name }}!</p>
+        </div>
+        <div class="right">
+            <img class="Brit BritanniaLogo logo" src="{% static 'images/Britannia_logo.png' %}" alt="logo"/>
+            <div class="logout-btn" onclick="logout()">Logout&nbsp;<i class="bi bi-box-arrow-right"></i></div>
+        </div>
+    </div>
+    <div class="homeContainer">
+        <div class="box view_dashboards" onclick="view_dashboard()">
+            <p class="links">VIEW DASHBOARDS</p>
+        </div>
+        <div class="box download_data" onclick="download_data()">
+            <p class="links">DOWNLOAD DATA</p>
+        </div>
+    </div>
+
+    <script>
+        function view_dashboard(){
+            window.location.href = "/dashboard";
+        }
+        function download_data(){
+            window.open("https://www.youtube.com", "_blank");
+        }
+        function logout() {
+            window.location.href = "/logout";
+        }
+    </script>
+
+    {% endblock %}
