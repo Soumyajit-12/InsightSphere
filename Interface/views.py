@@ -57,7 +57,7 @@ data = [
 
 # Create your views here.
 def index(request):
-    global current_user
+    # global current_user
     if request.method == 'POST':
         errors = []
         username = request.POST['username']
@@ -73,7 +73,8 @@ def index(request):
                 continue
 
         if user:
-            current_user = username
+            # current_user = username
+            request.session['username'] = username
             return redirect(home)
         else:
             errors.append('Invalid login credentials')
@@ -82,7 +83,7 @@ def index(request):
         return render(request, 'index.html')
 
 def signup(request):
-    global current_user
+    # global current_user
     if request.method == 'POST':
         errors = []
         firstname = request.POST['firstname']
@@ -114,7 +115,8 @@ def signup(request):
                 'password':password
             }
             users.append(user_dict.copy())
-            current_user = username
+            # current_user = username
+            request.session['username'] = username
             return redirect(home)
         elif cpassword != password:
             errors.append('Passwords does not match')
@@ -126,7 +128,8 @@ def signup(request):
         return render(request, 'signup.html')
     
 def home(request):
-    username = current_user
+    # username = current_user
+    username = request.session['username']
     for i in users:
         if i['username'] == username:
                 name = i['first_name']
@@ -140,6 +143,7 @@ def logout_view(request):
     return HttpResponseRedirect('/')
 
 def dashboard(request):
+    username = request.session['username']
     depts = []
     for i in data:
         if i['department'] in depts:
@@ -149,6 +153,7 @@ def dashboard(request):
     return render(request, 'dashboard.html', {'depts':depts})
 
 def dept(request,dept):
+    username = request.session['username']
     tags = []
     links = []
     for i in data:
