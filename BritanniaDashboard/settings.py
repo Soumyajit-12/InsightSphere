@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-ol5$*zqjxa3(4%5s@g7kjtx*yr_fms$xc1kw3m5+*c3co%*85g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1","https://insight-sphere-rho.vercel.app/"]
+ALLOWED_HOSTS = ["127.0.0.1",".vercel.app"]
 
 
 # Application definition
