@@ -18,9 +18,9 @@
         <p> {{dept}} Department</p>
     </div>
     <div class="homeContainer">
-        {% for i in info %}
-        <div class="box" id="{{i.link}}" onclick="redirect_to(this.id)">
-            <p class="links"> {{i.tag}} </p>
+        {% for i,j in content %}
+        <div class="box" id="{{j}}" onclick="redirect_to(this.id)">
+            <p class="links"> {{i}} </p>
         </div>
         {% endfor %}
     </div>

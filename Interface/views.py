@@ -15,17 +15,65 @@ import time
 from datetime import date
 from django.template.response import TemplateResponse
 
+# Information Database
+users = [
+    {
+        'first_name':'Soumyajit',
+        'last_name':'Mitra',
+        'username':'SMitra',
+        'email':'soumyajit120503@gmail.com',
+        'password':'sm@1253'
+    },
+    {
+        'first_name':'Subhajit',
+        'last_name':'Mitra',
+        'username':'SubhajitM',
+        'email':'subhajitm@britindia.com',
+        'password':'1234'
+    }
+]
+data = [
+    {
+        'department':'Sales',
+        'tag':'Cosistent Retailers',
+        'link':'www.google.com'
+    },
+    {
+        'department':'Sales',
+        'tag':'KATS Scorecard',
+        'link':'www.github.com'
+    },
+    {
+        'department':'Marketing',
+        'tag':'Advertisement',
+        'link':'www.amazon.in'
+    },
+    {
+        'department':'Supply Chain',
+        'tag':'Delivery Management',
+        'link':'www.youtube.com'
+    }
+]
+
 # Create your views here.
 def index(request):
+    global current_user
     if request.method == 'POST':
         errors = []
         username = request.POST['username']
         password = request.POST['password']
 
-        user = authenticate(username=username, password=password)
+        # user = authenticate(username=username, password=password)
+        user = False
+        for i in users:
+            if i['username'] == username and i['password'] == password:
+                user = True
+                break
+            else:
+                continue
 
-        if user is not None:
-            request.session['username'] = username
+        if user:
+            current_user = username
             return redirect(home)
         else:
             errors.append('Invalid login credentials')
@@ -34,6 +82,7 @@ def index(request):
         return render(request, 'index.html')
 
 def signup(request):
+    global current_user
     if request.method == 'POST':
         errors = []
         firstname = request.POST['firstname']
@@ -43,13 +92,29 @@ def signup(request):
         password = request.POST['password']
         cpassword = request.POST['cpassword']
 
-        if User.objects.filter(username=username).exists():
+        user_exits = False
+        for i in users:
+            if i['username'] == username:
+                user_exits = True
+                break
+            else:
+                continue
+
+        if user_exits:
             errors.append('Username already exists! Try logging in')
             return render(request, 'signup.html',{'errors':errors})
         elif cpassword == password:
-            u = User.objects.create_user(first_name=firstname,last_name=lastname,email=email,username=username, password=password, date_joined=date.today() , is_superuser=0)
-            u.save()
-            request.session['username'] = username
+            # u = User.objects.create_user(first_name=firstname,last_name=lastname,email=email,username=username, password=password, date_joined=date.today() , is_superuser=0)
+            # u.save()
+            user_dict = {
+                'first_name':firstname,
+                'last_name':lastname,
+                'username':username,
+                'email':email,
+                'password':password
+            }
+            users.append(user_dict.copy())
+            current_user = username
             return redirect(home)
         elif cpassword != password:
             errors.append('Passwords does not match')
@@ -61,8 +126,13 @@ def signup(request):
         return render(request, 'signup.html')
     
 def home(request):
-    username = request.session['username']
-    name = User.objects.filter(username=username)[0].first_name
+    username = current_user
+    for i in users:
+        if i['username'] == username:
+                name = i['first_name']
+                break
+        else:
+            continue
     return render(request, 'home.html', {'name':name})
 
 def logout_view(request):
@@ -71,14 +141,21 @@ def logout_view(request):
 
 def dashboard(request):
     depts = []
-    all_info = Information.objects.all()
-    for i in all_info:
-        if i.department in depts:
+    for i in data:
+        if i['department'] in depts:
             continue
         else:
-            depts.append(i.department)
+            depts.append(i['department'])
     return render(request, 'dashboard.html', {'depts':depts})
 
 def dept(request,dept):
-    info = Information.objects.filter(department=dept)
-    return render(request, 'dept.html',{'dept':dept, 'info':info})
+    tags = []
+    links = []
+    for i in data:
+        if i['department'] == dept:
+            tags.append(i['tag'])
+            links.append(i['link'])
+        else:
+            continue
+    content = zip(tags,links)
+    return render(request, 'dept.html',{'dept':dept, 'content':content})
