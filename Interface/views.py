@@ -36,22 +36,22 @@ data = [
     {
         'department':'Sales',
         'tag':'Cosistent Retailers',
-        'link':'www.google.com'
+        'link':'https://reports.britindia.com/authoring/ArteriaPromoClaimsAndFreeSKUAmount/ArteriaClaimsAndPromoFreSKUAch#1'
     },
     {
         'department':'Sales',
         'tag':'KATS Scorecard',
-        'link':'www.github.com'
+        'link':'https://reports.britindia.com/authoring/ArteriaPromoClaimsAndFreeSKUAmount/ArteriaPromoFreSKU#2'
     },
     {
         'department':'Marketing',
         'tag':'Advertisement',
-        'link':'www.amazon.in'
+        'link':'https://reports.britindia.com/authoring/ArteriaPromoClaimsAndFreeSKUAmount/NewPromo_Download#2'
     },
     {
         'department':'Supply',
         'tag':'Delivery Management',
-        'link':'www.youtube.com'
+        'link':'https://reports.britindia.com/authoring/ArteriaPromoClaimsAndFreeSKUAmount/DairyBudgetPromo#2'
     }
 ]
 
