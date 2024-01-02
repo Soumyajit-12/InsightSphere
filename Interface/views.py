@@ -49,7 +49,7 @@ data = [
         'link':'www.amazon.in'
     },
     {
-        'department':'Supply Chain',
+        'department':'Supply',
         'tag':'Delivery Management',
         'link':'www.youtube.com'
     }
