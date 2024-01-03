@@ -1,6 +1,0 @@
-{'first_name': 'Soumyajit', 'last_name': 'Mitra', 'username': 'SMitra', 'email': 'soumyajit120503@gmail.com', 'password': 'sm@1253'}
-{'first_name': 'Subhajit', 'last_name': 'Mitra', 'username': 'SubhajitM', 'email': 'subhajitm@britindia.com', 'password': '1234'}
-{'first_name': 'a', 'last_name': 'b', 'username': 'ab', 'email': 'ab@gmail.com', 'password': 'ab'}
-{'first_name': 'x', 'last_name': 'y', 'username': 'xy', 'email': 'xy@gmail.com', 'password': 'xy'}
-{'first_name': 'p', 'last_name': 'q', 'username': 'pq', 'email': 'pq@gmail.com', 'password': 'pq'}
-{'first_name': 'd', 'last_name': 'e', 'username': 'de', 'email': 'de@gmail.com', 'password': 'de'}

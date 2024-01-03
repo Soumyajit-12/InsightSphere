@@ -18,6 +18,10 @@ from datetime import date
 from django.template.response import TemplateResponse
 
 # Information Database
+users = [
+    {'first_name': 'Soumyajit', 'last_name': 'Mitra', 'username': 'SMitra', 'email': 'soumyajit120503@gmail.com', 'password': 'sm@1253'},
+    {'first_name': 'Subhajit', 'last_name': 'Mitra', 'username': 'SubhajitM', 'email': 'subhajitm@britindia.com', 'password': '1234'}
+]
 data = [
     {
         'department':'Sales',
@@ -43,12 +47,6 @@ data = [
 
 # Create your views here.
 def index(request):
-    global users
-    users = []
-    f = open('users.txt','r')
-    for line in f.readlines():
-        users.append(eval(line).copy())
-    f.close()
     global current_user
     if request.method == 'POST':
         errors = []
@@ -106,10 +104,6 @@ def signup(request):
                 'password':password
             }
             users.append(user_dict.copy())
-            f = open('users.txt','w')
-            for i in users:
-                f.write(str(i)+'\n')
-            f.close()
             current_user = username
             return redirect(home)
         elif cpassword != password:
