@@ -4,34 +4,20 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 import re
 import json
+import os
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 import base64
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth.models import User
+from django.conf import settings
 from .models import *
 import time
 from datetime import date
 from django.template.response import TemplateResponse
 
 # Information Database
-users = [
-    {
-        'first_name':'Soumyajit',
-        'last_name':'Mitra',
-        'username':'SMitra',
-        'email':'soumyajit120503@gmail.com',
-        'password':'sm@1253'
-    },
-    {
-        'first_name':'Subhajit',
-        'last_name':'Mitra',
-        'username':'SubhajitM',
-        'email':'subhajitm@britindia.com',
-        'password':'1234'
-    }
-]
 data = [
     {
         'department':'Sales',
@@ -40,23 +26,29 @@ data = [
     },
     {
         'department':'Sales',
-        'tag':'KATS Scorecard',
+        'tag':'KATS Dashboard',
         'link':'https://reports.britindia.com/authoring/ArteriaPromoClaimsAndFreeSKUAmount/ArteriaPromoFreSKU#2'
     },
     {
         'department':'Marketing',
-        'tag':'Advertisement',
+        'tag':'Marketing Intelligence Control Tower (MICT)',
         'link':'https://reports.britindia.com/authoring/ArteriaPromoClaimsAndFreeSKUAmount/NewPromo_Download#2'
     },
     {
-        'department':'Supply',
-        'tag':'Delivery Management',
+        'department':'Procurement',
+        'tag':'Procurement Dashboard',
         'link':'https://reports.britindia.com/authoring/ArteriaPromoClaimsAndFreeSKUAmount/DairyBudgetPromo#2'
     }
 ]
 
 # Create your views here.
 def index(request):
+    global users
+    users = []
+    f = open('users.txt','r')
+    for line in f.readlines():
+        users.append(eval(line).copy())
+    f.close()
     global current_user
     if request.method == 'POST':
         errors = []
@@ -114,6 +106,10 @@ def signup(request):
                 'password':password
             }
             users.append(user_dict.copy())
+            f = open('users.txt','w')
+            for i in users:
+                f.write(str(i)+'\n')
+            f.close()
             current_user = username
             return redirect(home)
         elif cpassword != password:
