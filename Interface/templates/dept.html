@@ -18,15 +18,39 @@
         <p> {{dept}} Dashboard</p>
     </div>
     <div class="homeContainer">
-        {% for i,j in content %}
+        {% for i,j,k in content %}
         <div class="box" id="{{j}}" onclick="redirect_to(this.id)">
             <p class="links"> {{i}} </p>
+            <img class="tag-icon" id="{{k}}" src="" alt="icon">
         </div>
         {% endfor %}
     </div>
     
 
     <script>
+        var className = document.getElementsByClassName('tag-icon');
+        for(var index=0;index < className.length;index++){
+            var image = className[index];
+            var id = image.id;
+            switch(id) {
+                case '1':
+                  // code block
+                  image.src = `{% static 'interface/icon1.png' %}`;
+                  break;
+                case '2':
+                  // code block
+                  image.src = `{% static 'interface/icon2.png' %}`;
+                  break;
+                case '3':
+                  // code block
+                  image.src = `{% static 'interface/icon3.png' %}`;
+                  break;
+                case '4':
+                  // code block
+                  image.src = `{% static 'interface/icon4.png' %}`;
+                  break;
+              }
+        } 
         function redirect_to(address){
             window.open(`${address}`, "_blank");
         }

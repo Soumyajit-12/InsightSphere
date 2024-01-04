@@ -114,6 +114,12 @@
     align-items: center;
 }
 .box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
     width: 25%;
     min-width: fit-content;
     padding: 20px;
@@ -126,6 +132,9 @@
     cursor: pointer;
     background-color:burlywood;
     color: red;
+}
+.box:hover .tag-icon{
+    filter: none;
 }
 .links{
     text-align: center;
@@ -145,4 +154,7 @@
     font-weight: bold;
     font-size: large;
     border-radius: 10px;
+}
+.tag-icon{
+    filter: invert(1%) sepia(1%) saturate(1%) hue-rotate(1deg) brightness(1000%) contrast(80%);
 }

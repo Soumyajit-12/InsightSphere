@@ -151,7 +151,8 @@ def dept(request,dept):
         if i['department'] == dept:
             tags.append(i['tag'])
             links.append(i['link'])
+            ids.append(i['id'])
         else:
             continue
-    content = zip(tags,links)
+    content = zip(tags,links,ids)
     return render(request, 'dept.html',{'dept':dept, 'content':content})
