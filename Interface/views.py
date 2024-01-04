@@ -28,28 +28,24 @@ data = [
         'id': '1',
         'department':'Sales',
         'tag':'Cosistent Retailers',
-        'src':"{% static 'interface/icon1.png' %}",
         'link':'https://reports.britindia.com/authoring/ArteriaPromoClaimsAndFreeSKUAmount/ArteriaClaimsAndPromoFreSKUAch#1'
     },
     {
         'id': '2',
         'department':'Sales',
         'tag':'KATS Dashboard',
-        'src':"{% static 'interface/icon2.png' %}",
         'link':'https://reports.britindia.com/authoring/ArteriaPromoClaimsAndFreeSKUAmount/ArteriaPromoFreSKU#2'
     },
     {
         'id': '3',
         'department':'Marketing',
         'tag':'Marketing Intelligence Control Tower (MICT)',
-        'src':"{% static 'interface/icon3.png' %}",
         'link':'https://reports.britindia.com/authoring/ArteriaPromoClaimsAndFreeSKUAmount/NewPromo_Download#2'
     },
     {
         'id': '4',
         'department':'Procurement',
         'tag':'Procurement Dashboard (ProDas)',
-        'src':"{% static 'interface/icon4.png' %}",
         'link':'https://prodas.britindia.com/'
     }
 ]
@@ -155,8 +151,7 @@ def dept(request,dept):
         if i['department'] == dept:
             tags.append(i['tag'])
             links.append(i['link'])
-            ids.append(i['id'])
         else:
             continue
-    content = zip(tags,links,ids)
+    content = zip(tags,links)
     return render(request, 'dept.html',{'dept':dept, 'content':content})
