@@ -28,19 +28,19 @@ data = [
         'id': '1',
         'department':'Sales',
         'tag':'Cosistent Retailers',
-        'link':'https://reports.britindia.com/authoring/ArteriaPromoClaimsAndFreeSKUAmount/ArteriaClaimsAndPromoFreSKUAch#1'
+        'link':'https://reports.britindia.com/#/workbooks/2650/views'
     },
     {
         'id': '2',
         'department':'Sales',
         'tag':'KATS Dashboard',
-        'link':'https://reports.britindia.com/authoring/ArteriaPromoClaimsAndFreeSKUAmount/ArteriaPromoFreSKU#2'
+        'link':'https://reports.britindia.com/#/workbooks/2649/views'
     },
     {
         'id': '3',
         'department':'Marketing',
         'tag':'Marketing Intelligence Control Tower (MICT)',
-        'link':'https://reports.britindia.com/authoring/ArteriaPromoClaimsAndFreeSKUAmount/NewPromo_Download#2'
+        'link':'https://reports.britindia.com/#/views/Britannia_Nov_23/SummaryView?:iid=1'
     },
     {
         'id': '4',
