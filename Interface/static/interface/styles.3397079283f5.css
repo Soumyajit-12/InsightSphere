@@ -154,6 +154,13 @@
     width: 20%;
     border-right: 2px solid black;
 }
+.navbar-item-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
 .navbar-item{
     padding: 10px 20px;
     text-align: center;
@@ -163,20 +170,37 @@
     font-weight: bold;
     border-bottom: 1px solid black;
 }
-.navbar-item:hover{
-    cursor: pointer;
-}
-.active{
-    text-decoration: underline;
-}
 .item-list{
-    background-color: white;
     border-radius: 10px;
     margin: 10px;
     padding: 5px 10px;
 }
+.list-item{
+    background-color: firebrick;
+    color: burlywood;
+    margin-bottom: 10px;
+    
+}
 .list-item:hover{
-    background-color: rgba(180, 180, 180, 0.6);
+    background-color: white;
+    color: firebrick;
+    cursor: pointer;
+}
+.active{
+    text-decoration: underline;
+    background-color: burlywood;
+    color: firebrick;
+}
+.data:hover{
+    cursor: pointer;
+    color: white;
+}
+.list-icon{
+    filter: none;
+    height: 3rem;
+}
+.data:hover .list-icon{
+    filter: invert(1%) sepia(1%) saturate(1%) hue-rotate(1deg) brightness(1000%) contrast(80%);
 }
 .childContainer{
     width: 80%;

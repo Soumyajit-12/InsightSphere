@@ -7,7 +7,7 @@
             <img class="Inst logo" src="{% static 'interface/InsightSphere_logo.png' %}" alt="logo"/>
         </div>
         <div class="center">
-            <p class="welcome-header">BRITANNIA INSIGHTSPHERE - CENTRAL REPORTING PLATFORM</p>
+            <p class="welcome-header">BRITANNIA INSIGHTSPHERE : {{dept}} Dashboard</p>
         </div>
         <div class="right">
             <img class="Brit BritanniaLogo logo" src="{% static 'interface/Britannia_logo.png' %}" alt="logo"/>
@@ -17,7 +17,10 @@
     <div class="parentContainer">
         <div class="navbar">
             <div class="navbar-item">
-                <p class="dashboard-list" id="dashboard-list">View Dashboard&nbsp;<i class="bi bi-caret-down-fill" style="font-size: smaller;"></i></p>
+                <div class="navbar-item-header">
+                    <p class="dashboard-list" id="dashboard-list">View Dashboard&nbsp;</p>
+                    <img class="list-icon" src="{% static 'interface/monitor.png' %}" alt="logo"/>
+                </div>
                 <ul class="item-list" id="item-list" style="list-style: none;" >
                     {% for i in depts %}
                     {% if i == dept %}
@@ -28,8 +31,11 @@
                     {% endfor %}
                 </ul>
             </div>
-            <div class="navbar-item" onclick="download_data()">
-                <p>Download Data</p>
+            <div class="navbar-item data" onclick="download_data()">
+                <div class="navbar-item-header">
+                    <p>Download Data</p>
+                    <img class="list-icon" src="{% static 'interface/database.png' %}" alt="logo"/>
+                </div>
             </div>
         </div>
         <div class="childContainer">
