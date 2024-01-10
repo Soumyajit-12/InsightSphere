@@ -14,20 +14,43 @@
             <div class="logout-btn" onclick="logout()">Logout&nbsp;<i class="bi bi-box-arrow-right"></i></div>
         </div>
     </div>
-    <div class="dept_header">
-        <p> {{dept}} Dashboard</p>
-    </div>
-    <div class="homeContainer">
-        {% for i,j,k in content %}
-        <div class="box" id="{{j}}" onclick="redirect_to(this.id)">
-            <p class="links"> {{i}} </p>
-            <img class="tag-icon" id="{{k}}" src="" alt="icon">
+    <div class="parentContainer">
+        <div class="navbar">
+            <div class="navbar-item">
+                <p class="dashboard-list" id="dashboard-list">View Dashboard&nbsp;<i class="bi bi-caret-down-fill" style="font-size: smaller;"></i></p>
+                <ul class="item-list" id="item-list" style="list-style: none;" >
+                    {% for i in depts %}
+                    {% if i == dept %}
+                    <li class="list-item active" id="{{i}}" onclick="view_dept(this.id)">{{i}}</li>
+                    {% else %}
+                    <li class="list-item" id="{{i}}" onclick="view_dept(this.id)">{{i}}</li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="navbar-item" onclick="download_data()">
+                <p>Download Data</p>
+            </div>
         </div>
-        {% endfor %}
+        <div class="childContainer">
+            {% for i,j,k in content %}
+            <div class="box" id="{{j}}" onclick="redirect_to(this.id)">
+                <p class="links"> {{i}} </p>
+                <img class="tag-icon" id="{{k}}" src="" alt="icon">
+            </div>
+            {% endfor %}
+        </div>
     </div>
     
 
     <script>
+        function view_dept(dept) {
+            window.location.href = `/dashboard/${dept}`;
+        }
+        function download_data(){
+            window.open("https://www.britannia.co.in/", "_blank");
+        }
+
         var className = document.getElementsByClassName('tag-icon');
         for(var index=0;index < className.length;index++){
             var image = className[index];

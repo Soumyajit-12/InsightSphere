@@ -144,6 +144,13 @@ def dashboard(request):
     return render(request, 'dashboard.html', {'depts':depts})
 
 def dept(request,dept):
+    depts = []
+    for i in data:
+        if i['department'] in depts:
+            continue
+        else:
+            depts.append(i['department'])
+
     tags = []
     links = []
     ids = []
@@ -155,4 +162,4 @@ def dept(request,dept):
         else:
             continue
     content = zip(tags,links,ids)
-    return render(request, 'dept.html',{'dept':dept, 'content':content})
+    return render(request, 'dept.html',{'dept':dept,'depts':depts, 'content':content})
