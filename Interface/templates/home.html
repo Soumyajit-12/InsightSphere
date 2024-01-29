@@ -21,6 +21,9 @@
         <div class="box download_data" onclick="download_data()">
             <p class="links">DOWNLOAD DATA</p>
         </div>
+        <div class="box download_data" onclick="ask_brit_insightSphere()">
+            <p class="links">ASK BRIT INSIGHTSPHERE</p>
+        </div>
     </div>
 
     <script>
@@ -28,7 +31,10 @@
             window.location.href = "/dashboard";
         }
         function download_data(){
-            window.open("https://www.britannia.co.in/", "_blank");
+            window.open("http://127.0.0.1:5000/", "_blank");
+        }
+        function ask_brit_insightSphere(){
+            window.open("http://localhost:8501/", "_blank");
         }
         function logout() {
             window.location.href = "/logout";
