@@ -28,19 +28,19 @@ data = [
         'id': '1',
         'department':'Sales',
         'tag':'Cosistent Retailers',
-        'link':'https://reports.britindia.com/#/workbooks/2650/views'
+        'link':'https://reports.britindia.com/#/views/ConsistentRetailers_Jan24_v2/LandingPage_with_mktg'
     },
     {
         'id': '2',
         'department':'Sales',
         'tag':'KATS Dashboard',
-        'link':'https://reports.britindia.com/#/workbooks/2649/views'
+        'link':'https://reports.britindia.com/#/workbooks/2703/views'
     },
     {
         'id': '3',
         'department':'Marketing',
         'tag':'Marketing Intelligence Control Tower (MICT)',
-        'link':'https://reports.britindia.com/#/views/Britannia_Nov_23/SummaryView?:iid=1'
+        'link':'https://reports.britindia.com/#/views/Britannia_Dec_23_updated_17084928389820/SummaryView'
     },
     {
         'id': '4',
